@@ -1,0 +1,15 @@
+# dependencies
+/node_modules
+
+# build
+/dist
+/out-tsc
+/.angular
+/.next
+
+# misc
+.DS_Store
+*.log
+
+# env
+.env*

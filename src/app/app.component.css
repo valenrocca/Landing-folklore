@@ -1,0 +1,19 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+:host.home-page {
+  height: 100vh;
+  overflow: hidden;
+}
+
+main {
+  flex: 1;
+  min-height: 0;
+}
+
+:host.home-page main {
+  overflow: hidden;
+}

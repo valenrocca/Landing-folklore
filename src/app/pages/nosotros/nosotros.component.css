@@ -1,0 +1,33 @@
+.about__eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.about__logo {
+  width: min(100%, 720px);
+  height: auto;
+  display: block;
+  margin: 1rem auto 0;
+}
+
+.about__card {
+  margin-top: 2rem;
+  padding: 2rem;
+  border-radius: 1.25rem;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8px);
+  text-align: left;
+}
+
+.about__card p {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.about__card p + p {
+  margin-top: 1rem;
+}

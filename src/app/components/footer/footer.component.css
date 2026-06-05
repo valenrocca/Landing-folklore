@@ -1,0 +1,14 @@
+.footer {
+  position: relative;
+  z-index: 1;
+  padding: 1.5rem 0;
+  text-align: center;
+}
+
+.footer__inner p {
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.45);
+}

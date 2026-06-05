@@ -1,0 +1,25 @@
+<header class="header">
+  <div class="header__inner">
+    <a routerLink="/" class="header__logo">
+      <img [src]="headerLogo" alt="República Folklore" />
+    </a>
+
+    <nav class="header__nav">
+      <a
+        routerLink="/"
+        routerLinkActive="header__link--active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="header__link"
+      >
+        Inicio
+      </a>
+      <a
+        routerLink="/nosotros"
+        routerLinkActive="header__link--active"
+        class="header__link"
+      >
+        Nosotros
+      </a>
+    </nav>
+  </div>
+</header>

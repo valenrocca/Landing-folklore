@@ -1,0 +1,8 @@
+<div class="countdown">
+  @for (unit of units; track unit.key) {
+    <div class="countdown__unit">
+      <span class="countdown__number">{{ pad(time[unit.key]) }}</span>
+      <span class="countdown__label">{{ unit.label }}</span>
+    </div>
+  }
+</div>
