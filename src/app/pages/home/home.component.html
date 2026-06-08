@@ -4,7 +4,7 @@
       <img
         src="assets/images/logo.png"
         alt="República Folklore — 21 y 22 de noviembre 2026, Parque de la Ciudad"
-        class="hero__logo"
+        class="page-logo"
       />
 
       <div class="hero__cta">
@@ -16,10 +16,23 @@
         </div>
 
         <div class="hero__actions">
-          <a href="#" class="btn-pill btn-pill--compact">Registrate</a>
+          <button
+            type="button"
+            class="btn-pill btn-pill--compact"
+            (click)="openRegister()"
+          >
+            Registrate
+          </button>
           <a href="#" class="btn-pill btn-pill--compact">Comprar entradas</a>
         </div>
       </div>
     </div>
   </div>
+
+  @if (showRegister) {
+    <app-register-modal
+      (closed)="closeRegister()"
+      (submitted)="onRegisterSubmit($event)"
+    />
+  }
 </section>

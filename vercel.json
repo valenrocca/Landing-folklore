@@ -1,0 +1,5 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist/landing-folklore/browser",
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+}

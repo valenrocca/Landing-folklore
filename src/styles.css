@@ -38,7 +38,7 @@ a {
 
 /* ── Page background ── */
 .festival-bg {
-  background: #000000;
+  background: transparent;
 }
 
 /* ── Film grain ── */
@@ -58,12 +58,12 @@ a {
   background-size: 160px 160px;
 }
 
-/* ── Pill buttons ── */
+/* ── Buttons ── */
 .btn-pill {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 9999px;
+  border-radius: 0;
   background: #ffffff;
   padding: 0.9rem 2.25rem;
   font-size: 0.8125rem;
@@ -71,7 +71,7 @@ a {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #000000;
-  border: none;
+  border: 1.5px solid #000000;
   cursor: pointer;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
@@ -116,4 +116,16 @@ a {
 
 .text-accent {
   color: var(--color-accent);
+}
+
+/* Shared page logo — same size on Home and Nosotros */
+.page-logo {
+  width: 100%;
+  max-width: min(94vw, 700px);
+  max-height: min(50vh, 400px);
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }

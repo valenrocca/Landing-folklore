@@ -1,3 +1,8 @@
+.about {
+  max-width: min(94vw, 700px);
+  margin: 0 auto;
+}
+
 .about__eyebrow {
   font-size: 0.6875rem;
   font-weight: 700;
@@ -6,11 +11,8 @@
   color: rgba(255, 255, 255, 0.75);
 }
 
-.about__logo {
-  width: min(100%, 720px);
-  height: auto;
-  display: block;
-  margin: 1rem auto 0;
+.page-logo {
+  margin-top: 1rem;
 }
 
 .about__card {
