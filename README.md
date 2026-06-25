@@ -4,8 +4,7 @@ Sitio web del festival. Angular con HTML y CSS puro.
 
 ## Páginas
 
-- `/` — Landing (hero, countdown, CTAs)
-- `/nosotros` — Sobre el festival
+- `/` — Landing (registro, manifiesto)
 
 ## Desarrollo
 

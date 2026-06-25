@@ -1,3 +1,8 @@
+/**
+ * POST /api/register — sync a Typeform (y opcionalmente Supabase server-side).
+ * Deshabilitado desde el frontend (registration.service.ts). El endpoint sigue
+ * disponible en producción/Vercel para cuando se reactive.
+ */
 import {
   saveToSupabase,
   syncToTypeform,

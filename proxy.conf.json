@@ -1,5 +1,6 @@
 {
-  "/api": {
+  "_comment": "Proxy deshabilitado. Para reactivar Typeform: renombrar /api_DISABLED a /api y descomentar syncToTypeform en registration.service.ts",
+  "/api_DISABLED": {
     "target": "http://localhost:3000",
     "secure": false,
     "changeOrigin": true

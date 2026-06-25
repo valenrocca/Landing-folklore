@@ -1,25 +1,22 @@
 :host {
   display: block;
-  height: 100%;
 }
 
-.page--fit {
-  height: 100%;
-  min-height: unset;
+.landing {
+  position: relative;
+}
+
+.hero-section {
+  min-height: calc(100vh - var(--space-page-top) - var(--space-page-bottom));
+  min-height: calc(100dvh - var(--space-page-top) - var(--space-page-bottom));
   padding: var(--space-page-top) var(--space-page-x) var(--space-page-bottom);
-  overflow: hidden;
-}
-
-.page--modal-open .hero__body {
-  visibility: hidden;
-  pointer-events: none;
 }
 
 .hero {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  min-height: inherit;
 }
 
 .hero__body {
@@ -27,14 +24,15 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 22rem;
-  gap: 1.25rem;
+  max-width: 100%;
+  gap: 1.5rem;
 }
 
 .hero__logo {
   display: block;
   width: 100%;
-  max-width: 100%;
+  max-width: min(92vw, 22rem);
+  max-height: 52vh;
   height: auto;
   object-fit: contain;
 }
@@ -44,6 +42,7 @@
   flex-direction: column;
   gap: 0.5rem;
   width: 100%;
+  max-width: 22rem;
 }
 
 .btn-hero--register {
@@ -56,37 +55,52 @@
   color: #000000;
 }
 
-.home-footer {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 2;
-  height: 2.5rem;
-  background-color: #7ec8e8;
-  background-image: url('../../../assets/images/fondo-registro.png');
-  background-repeat: repeat-x;
-  background-position: center bottom;
-  background-size: auto 220%;
-  border-top: 2px solid #000000;
-  pointer-events: none;
-  transition: opacity 0.2s ease;
+.manifesto {
+  width: 100%;
+  line-height: 0;
 }
 
-.home-footer--hidden {
-  opacity: 0;
+.manifesto__visual {
+  position: relative;
+  width: 100%;
+}
+
+.manifesto__bg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.manifesto__text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 82%;
+  height: 82%;
+  transform: translate(-50%, -50%);
+  object-fit: contain;
+  object-position: center;
+}
+
+.manifesto__visual--desktop {
+  display: none;
 }
 
 @media (min-width: 768px) {
+  .hero__logo {
+    max-width: min(88vw, 40rem);
+    max-height: 58vh;
+  }
+
   .hero__body {
-    max-width: 32rem;
-    gap: 1.5rem;
+    gap: 2rem;
   }
 
   .hero__actions {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    max-width: none;
     gap: 0.625rem;
   }
 
@@ -94,14 +108,24 @@
     min-width: 10.5rem;
   }
 
-  .home-footer {
-    height: 3rem;
+  .manifesto__visual--mobile {
+    display: none;
+  }
+
+  .manifesto__visual--desktop {
+    display: block;
+  }
+
+  .manifesto__text {
+    width: 86%;
+    height: 86%;
   }
 }
 
 @media (min-width: 1024px) {
-  .hero__body {
-    max-width: 36rem;
+  .hero__logo {
+    max-width: min(80vw, 48rem);
+    max-height: 62vh;
   }
 
   .btn-hero {

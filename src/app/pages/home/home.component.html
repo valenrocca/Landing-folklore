@@ -1,28 +1,60 @@
-<section class="page page--fit" [class.page--modal-open]="showRegister">
-  <div class="page__content hero">
-    <div class="hero__body">
-      <img
-        src="assets/images/logo.png"
-        alt="República Folklore — 21 y 22 de noviembre 2026, Parque de la Ciudad"
-        class="hero__logo"
-      />
+<div class="landing">
+  <section class="page hero-section">
+    <div class="page__content hero">
+      <div class="hero__body">
+        <img
+          src="assets/images/logo.png"
+          alt="República Folklore — 21 y 22 de noviembre 2026, Parque de la Ciudad"
+          class="hero__logo"
+        />
 
-      <div class="hero__actions">
-        <button
-          type="button"
-          class="btn-hero btn-hero--register"
-          (click)="openRegister()"
-        >
-          Registrate
-        </button>
-        <a href="#" class="btn-hero btn-hero--tickets">Comprar entradas</a>
+        @if (!showRegister && !registrationComplete) {
+          <div class="hero__actions">
+            <button
+              type="button"
+              class="btn-hero btn-hero--register"
+              (click)="openRegister()"
+            >
+              Registrate
+            </button>
+            <a href="#" class="btn-hero btn-hero--tickets">Comprar entradas</a>
+          </div>
+        }
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="home-footer" [class.home-footer--hidden]="showRegister" aria-hidden="true"></div>
+  <section class="manifesto" aria-label="Manifiesto">
+    <div class="manifesto__visual manifesto__visual--mobile">
+      <img
+        src="assets/images/Fondo%20Manifiesto%20Mobile-04.png"
+        alt=""
+        class="manifesto__bg"
+        aria-hidden="true"
+      />
+      <img
+        src="assets/images/Manifiesto%20PNG%20Mobile-04.png"
+        alt="Manifiesto República Folklore"
+        class="manifesto__text"
+      />
+    </div>
+
+    <div class="manifesto__visual manifesto__visual--desktop">
+      <img
+        src="assets/images/Fondo%20Manifiesto%20Desktop-02.png"
+        alt=""
+        class="manifesto__bg"
+        aria-hidden="true"
+      />
+      <img
+        src="assets/images/Manifiesto%20PNG%20Desktop-02.png"
+        alt="Manifiesto República Folklore"
+        class="manifesto__text"
+      />
+    </div>
+  </section>
 
   @if (showRegister) {
-    <app-register-modal />
+    <app-register-modal (registrationSuccess)="onRegistrationSuccess()" />
   }
-</section>
+</div>

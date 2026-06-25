@@ -55,11 +55,12 @@
   --btn-form-px: 1rem;
   --btn-form-width: auto;
 
-  /* Registro popup */
-  --register-max-width: 24rem;
-  --register-frame-padding: 2.75rem 2rem 2.5rem;
-  --register-input-height: 2.75rem;
-  --register-input-size: 1.25rem;
+  /* Registro popup — proporción fondo-registro.png (1024×576, 16:9) */
+  --register-aspect-ratio: 16 / 9;
+  --register-max-width: min(94vw, 26rem);
+  --register-frame-padding: 1.65rem 2.35rem 1.4rem;
+  --register-input-height: 2.5rem;
+  --register-input-size: 1.125rem;
 }
 
 @media (min-width: 768px) {
@@ -89,10 +90,10 @@
     --btn-form-font: 0.875rem;
     --btn-form-px: 1.125rem;
 
-    --register-max-width: 30rem;
-    --register-frame-padding: 3.25rem 2.5rem 3rem;
-    --register-input-height: 3rem;
-    --register-input-size: 1.375rem;
+    --register-max-width: min(88vw, 36rem);
+    --register-frame-padding: 1.85rem 3rem 1.6rem;
+    --register-input-height: 2.625rem;
+    --register-input-size: 1.25rem;
   }
 }
 
@@ -112,10 +113,10 @@
     --btn-form-font: 0.9375rem;
     --btn-form-px: 1.25rem;
 
-    --register-max-width: 32rem;
-    --register-frame-padding: 3.5rem 2.75rem 3.25rem;
-    --register-input-height: 3.25rem;
-    --register-input-size: 1.5rem;
+    --register-max-width: min(82vw, 40rem);
+    --register-frame-padding: 2rem 3.5rem 1.75rem;
+    --register-input-height: 2.75rem;
+    --register-input-size: 1.3125rem;
   }
 }
 

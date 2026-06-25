@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, output } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -15,6 +15,8 @@ import { RegistrationService } from '../../services/registration.service';
   styleUrl: './register-modal.component.css',
 })
 export class RegisterModalComponent {
+  registrationSuccess = output<void>();
+
   form: FormGroup;
   isSubmitting = false;
   submitError = '';
@@ -49,6 +51,7 @@ export class RegisterModalComponent {
         email: email.trim(),
       });
       this.submitSuccess = true;
+      this.registrationSuccess.emit();
     } catch {
       this.submitError =
         'No se pudo completar el registro. Intentá de nuevo.';

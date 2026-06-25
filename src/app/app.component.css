@@ -6,8 +6,10 @@
 }
 
 :host.home-page {
-  height: 100vh;
-  overflow: hidden;
+  min-height: 100vh;
+  min-height: 100dvh;
+  height: auto;
+  overflow-x: hidden;
 }
 
 main {
@@ -18,5 +20,5 @@ main {
 }
 
 :host.home-page main {
-  overflow: hidden;
+  overflow: visible;
 }

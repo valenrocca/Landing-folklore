@@ -1,9 +1,9 @@
 <div
   class="register"
+  [class.register--success]="submitSuccess"
   role="dialog"
   aria-modal="true"
   aria-labelledby="register-logo"
-
 >
   <div class="register__frame" (click)="$event.stopPropagation()">
     <div class="register__panel">

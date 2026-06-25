@@ -11,7 +11,10 @@ export interface RegisterFormData {
 export class RegistrationService {
   async register(data: RegisterFormData): Promise<void> {
     await this.registerLocally(data);
-    void this.syncToTypeform(data);
+
+    // Typeform sync via /api/register — deshabilitado para evitar errores en consola local.
+    // Para reactivar: descomentar la línea de abajo y restaurar el proxy en proxy.conf.json.
+    // void this.syncToTypeform(data);
   }
 
   private async registerLocally(data: RegisterFormData): Promise<void> {
@@ -32,15 +35,15 @@ export class RegistrationService {
     }
   }
 
-  private async syncToTypeform(data: RegisterFormData): Promise<void> {
-    try {
-      await fetch('/api/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...data, skipSupabase: true }),
-      });
-    } catch {
-      // Typeform sync is best-effort; Supabase already saved the registration.
-    }
-  }
+  // private async syncToTypeform(data: RegisterFormData): Promise<void> {
+  //   try {
+  //     await fetch('/api/register', {
+  //       method: 'POST',
+  //       headers: { 'Content-Type': 'application/json' },
+  //       body: JSON.stringify({ ...data, skipSupabase: true }),
+  //     });
+  //   } catch {
+  //     // Typeform sync is best-effort; Supabase already saved the registration.
+  //   }
+  // }
 }
