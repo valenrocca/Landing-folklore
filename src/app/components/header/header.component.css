@@ -22,8 +22,8 @@
 .header__logo-img {
   display: block;
   width: auto;
-  height: 2.25rem;
-  max-width: min(42vw, 9rem);
+  height: 3rem;
+  max-width: min(52vw, 12rem);
   object-fit: contain;
   object-position: left center;
 }
@@ -58,8 +58,8 @@
   }
 
   .header__logo-img {
-    height: 2.75rem;
-    max-width: 11rem;
+    height: 3.5rem;
+    max-width: 14rem;
   }
 
   .header__social {
@@ -73,8 +73,8 @@
 
 @media (min-width: 1024px) {
   .header__logo-img {
-    height: 3.125rem;
-    max-width: 12.5rem;
+    height: 4rem;
+    max-width: 16rem;
   }
 
   .header__social-img {

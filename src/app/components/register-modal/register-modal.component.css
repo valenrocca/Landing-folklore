@@ -47,7 +47,7 @@
 .register__logo {
   display: block;
   width: auto;
-  height: 2rem;
+  height: 3.5rem;
   max-width: 100%;
   object-fit: contain;
   filter: brightness(0);
@@ -167,7 +167,7 @@
   }
 
   .register__logo {
-    height: 2.5rem;
+    height: 4rem;
   }
 
   .register__panel {
@@ -182,7 +182,7 @@
 
 @media (min-width: 1024px) {
   .register__logo {
-    height: 2.75rem;
+    height: 4.5rem;
   }
 
   .register__panel {
