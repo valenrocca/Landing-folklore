@@ -24,8 +24,19 @@ export default async function handler(
   try {
     await saveToSupabase(payload);
   } catch (error) {
+    const message =
+      error instanceof Error ? error.message : 'Unknown Supabase error';
+    const supabaseCode =
+      error && typeof error === 'object' && 'code' in error
+        ? String((error as { code?: string }).code)
+        : undefined;
+
     console.error('Supabase insert failed', error);
-    res.status(500).json({ error: 'Could not save registration' });
+    res.status(500).json({
+      error: 'Could not save registration',
+      details: message,
+      code: supabaseCode,
+    });
     return;
   }
 

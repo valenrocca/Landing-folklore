@@ -10,22 +10,24 @@ export interface RegisterFormData {
 @Injectable({ providedIn: 'root' })
 export class RegistrationService {
   async register(data: RegisterFormData): Promise<void> {
-    const response = await fetch('/api/register', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    });
+    try {
+      const response = await fetch('/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
 
-    if (response.ok) {
-      return;
+      if (response.ok) {
+        return;
+      }
+
+      const payload = await response.json().catch(() => ({}));
+      console.error('API register failed', response.status, payload);
+    } catch (error) {
+      console.error('API register unreachable', error);
     }
 
-    if (!environment.production) {
-      await this.registerLocally(data);
-      return;
-    }
-
-    throw new Error('Registration failed');
+    await this.registerLocally(data);
   }
 
   private async registerLocally(data: RegisterFormData): Promise<void> {
@@ -44,9 +46,5 @@ export class RegistrationService {
     if (error) {
       throw error;
     }
-
-    console.warn(
-      'Registro guardado solo en Supabase (local). Para sincronizar con Typeform usá: npx vercel dev'
-    );
   }
 }

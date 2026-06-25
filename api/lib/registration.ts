@@ -1,4 +1,3 @@
-import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import { createHmac, timingSafeEqual } from 'crypto';
 
 export interface RegistrationPayload {
@@ -29,16 +28,27 @@ const FIELD_ALIASES: Record<keyof RegistrationPayload, string[]> = {
 
 let cachedFieldMap: Map<keyof RegistrationPayload, TypeformField> | null = null;
 
-function getSupabaseClient(): SupabaseClient {
-  const url = process.env.SUPABASE_URL;
-  const key =
-    process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_ANON_KEY;
+function getSupabaseConfig(): { url: string; key: string } {
+  const url = process.env.SUPABASE_URL?.trim();
+  const key = (
+    process.env.SUPABASE_SERVICE_ROLE_KEY ||
+    process.env.SUPABASE_ANON_KEY ||
+    process.env.SUPABASE_PUBLISHABLE_KEY
+  )?.trim();
 
   if (!url || !key) {
-    throw new Error('Missing Supabase environment variables');
+    throw new Error(
+      'Missing Supabase env vars: SUPABASE_URL and SUPABASE_ANON_KEY'
+    );
   }
 
-  return createClient(url, key);
+  if (url.includes('supabase.com/dashboard')) {
+    throw new Error(
+      'SUPABASE_URL must be https://YOUR-PROJECT-REF.supabase.co (not the dashboard URL)'
+    );
+  }
+
+  return { url, key };
 }
 
 function normalize(value: string): string {
@@ -88,15 +98,28 @@ export function validateRegistrationPayload(
 export async function saveToSupabase(
   payload: RegistrationPayload
 ): Promise<void> {
-  const supabase = getSupabaseClient();
-  const { error } = await supabase.from('registrations').insert({
-    nombre: payload.nombre,
-    apellido: payload.apellido,
-    email: payload.email,
+  const { url, key } = getSupabaseConfig();
+
+  const response = await fetch(`${url}/rest/v1/registrations`, {
+    method: 'POST',
+    headers: {
+      apikey: key,
+      Authorization: `Bearer ${key}`,
+      'Content-Type': 'application/json',
+      Prefer: 'return=minimal',
+    },
+    body: JSON.stringify({
+      nombre: payload.nombre,
+      apellido: payload.apellido,
+      email: payload.email,
+    }),
   });
 
-  if (error) {
-    throw error;
+  if (!response.ok) {
+    const details = await response.text();
+    throw new Error(
+      `Supabase REST insert failed (${response.status}): ${details}`
+    );
   }
 }
 
