@@ -1,12 +1,4 @@
-type ApiResponse = {
-  status: (code: number) => ApiResponse;
-  json: (body: unknown) => void;
-};
-
-export default function handler(
-  _req: unknown,
-  res: ApiResponse
-): void {
+module.exports = function handler(_req, res) {
   res.status(200).json({
     ok: true,
     env: {
@@ -21,4 +13,4 @@ export default function handler(
       ),
     },
   });
-}
+};
