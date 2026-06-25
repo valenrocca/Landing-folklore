@@ -6,6 +6,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { RegistrationService } from '../../services/registration.service';
+import { RegistrationError } from '../../services/registration.errors';
 
 @Component({
   selector: 'app-register-modal',
@@ -52,9 +53,11 @@ export class RegisterModalComponent {
       });
       this.submitSuccess = true;
       this.registrationSuccess.emit();
-    } catch {
+    } catch (error) {
       this.submitError =
-        'No se pudo completar el registro. Intentá de nuevo.';
+        error instanceof RegistrationError
+          ? error.message
+          : 'No se pudo completar el registro. Intentá de nuevo.';
     } finally {
       this.isSubmitting = false;
     }

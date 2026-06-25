@@ -117,6 +117,18 @@ export async function saveToSupabase(
 
   if (!response.ok) {
     const details = await response.text();
+    const duplicateEmail =
+      response.status === 409 ||
+      details.includes('23505') ||
+      details.includes('registrations_email_unique_idx') ||
+      details.toLowerCase().includes('duplicate key');
+
+    if (duplicateEmail) {
+      throw Object.assign(new Error('Este email ya está registrado.'), {
+        code: 'duplicate_email',
+      });
+    }
+
     throw new Error(
       `Supabase REST insert failed (${response.status}): ${details}`
     );

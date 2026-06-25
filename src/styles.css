@@ -55,12 +55,12 @@
   --btn-form-px: 1rem;
   --btn-form-width: auto;
 
-  /* Registro popup — proporción fondo-registro.png (1024×576, 16:9) */
+  /* Registro popup — proporción fondo-registro.png (1024×576, 16:9) en desktop */
   --register-aspect-ratio: 16 / 9;
-  --register-max-width: min(94vw, 26rem);
-  --register-frame-padding: 1.65rem 2.35rem 1.4rem;
-  --register-input-height: 2.5rem;
-  --register-input-size: 1.125rem;
+  --register-max-width: min(92vw, 21.5rem);
+  --register-frame-padding: 1.35rem 1.65rem 1.15rem;
+  --register-input-height: 2.375rem;
+  --register-input-size: 1rem;
 }
 
 @media (min-width: 768px) {

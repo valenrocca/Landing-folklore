@@ -7,5 +7,19 @@
         class="header__logo-img"
       />
     </a>
+
+    <nav class="header__social" aria-label="Redes sociales">
+      @for (link of socialLinks; track link.label) {
+        <a
+          class="header__social-link"
+          [href]="link.href"
+          target="_blank"
+          rel="noopener noreferrer"
+          [attr.aria-label]="link.label"
+        >
+          <img [src]="link.image" alt="" class="header__social-img" />
+        </a>
+      }
+    </nav>
   </div>
 </header>

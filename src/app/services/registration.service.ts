@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
+import { RegistrationError, toRegistrationError } from './registration.errors';
 
 export interface RegisterFormData {
   nombre: string;
@@ -24,14 +25,16 @@ export class RegistrationService {
       environment.supabaseAnonKey
     );
 
-    const { error } = await supabase.from('registrations').insert({
-      nombre: data.nombre,
-      apellido: data.apellido,
-      email: data.email,
-    });
+    const payload = {
+      nombre: data.nombre.trim(),
+      apellido: data.apellido.trim(),
+      email: data.email.trim().toLowerCase(),
+    };
+
+    const { error } = await supabase.from('registrations').insert(payload);
 
     if (error) {
-      throw error;
+      throw toRegistrationError(error);
     }
   }
 
@@ -47,3 +50,5 @@ export class RegistrationService {
   //   }
   // }
 }
+
+export { RegistrationError };
