@@ -1,13 +1,13 @@
 <div class="video-bg" aria-hidden="true">
   <video
+    #bgVideo
     class="video-bg__media"
     autoplay
     muted
     loop
     playsinline
     preload="auto"
-  >
-    <source [src]="videoSrc" type="video/mp4" />
-  </video>
+    [src]="videoSrc"
+  ></video>
   <div class="video-bg__overlay"></div>
 </div>

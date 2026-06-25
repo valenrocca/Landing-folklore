@@ -23,7 +23,7 @@
 .footer__social-img {
   display: block;
   width: auto;
-  height: 2.5rem;
+  height: 1.75rem;
   object-fit: contain;
 }
 
@@ -37,12 +37,12 @@
   }
 
   .footer__social-img {
-    height: 3rem;
+    height: 2rem;
   }
 }
 
 @media (min-width: 1024px) {
   .footer__social-img {
-    height: 3.25rem;
+    height: 2.25rem;
   }
 }

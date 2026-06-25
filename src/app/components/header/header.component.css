@@ -48,7 +48,7 @@
 .header__social-img {
   display: block;
   width: auto;
-  height: 2.25rem;
+  height: 1.625rem;
   object-fit: contain;
 }
 
@@ -67,7 +67,7 @@
   }
 
   .header__social-img {
-    height: 2.75rem;
+    height: 1.875rem;
   }
 }
 
@@ -78,6 +78,6 @@
   }
 
   .header__social-img {
-    height: 3rem;
+    height: 2rem;
   }
 }
