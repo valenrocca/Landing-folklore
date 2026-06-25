@@ -56,10 +56,10 @@
   --btn-form-width: auto;
 
   /* Registro popup */
-  --register-max-width: 21rem;
-  --register-border: 1.75rem 1.25rem;
-  --register-input-height: 2rem;
-  --register-input-size: 0.9375rem;
+  --register-max-width: 24rem;
+  --register-frame-padding: 2.75rem 2rem 2.5rem;
+  --register-input-height: 2.75rem;
+  --register-input-size: 1.25rem;
 }
 
 @media (min-width: 768px) {
@@ -89,10 +89,10 @@
     --btn-form-font: 0.875rem;
     --btn-form-px: 1.125rem;
 
-    --register-max-width: 27rem;
-    --register-border: 2rem 1.75rem;
-    --register-input-height: 2.125rem;
-    --register-input-size: 1rem;
+    --register-max-width: 30rem;
+    --register-frame-padding: 3.25rem 2.5rem 3rem;
+    --register-input-height: 3rem;
+    --register-input-size: 1.375rem;
   }
 }
 
@@ -112,10 +112,10 @@
     --btn-form-font: 0.9375rem;
     --btn-form-px: 1.25rem;
 
-    --register-max-width: 29rem;
-    --register-border: 2.25rem 2rem;
-    --register-input-height: 2.25rem;
-    --register-input-size: 1.0625rem;
+    --register-max-width: 32rem;
+    --register-frame-padding: 3.5rem 2.75rem 3.25rem;
+    --register-input-height: 3.25rem;
+    --register-input-size: 1.5rem;
   }
 }
 

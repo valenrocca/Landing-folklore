@@ -29,8 +29,7 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
-              "node_modules/@typeform/embed/build/css/widget.css"
+              "src/styles.css"
             ],
             "scripts": []
           },
@@ -60,6 +59,9 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "proxyConfig": "proxy.conf.json"
+          },
           "configurations": {
             "production": {
               "buildTarget": "landing-folklore:build:production"

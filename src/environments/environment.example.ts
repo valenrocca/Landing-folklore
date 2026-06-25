@@ -1,7 +1,7 @@
 export const environment = {
   production: false,
-  typeformFormId: 'DxHVf2L2',
-  typeformDomain: 'https://daleplaylive.typeform.com',
-  /** Bloquea la home con el popup de registro hasta el lanzamiento. */
+  /** Solo para fallback local si /api/register no está disponible. */
+  supabaseUrl: 'https://YOUR_PROJECT.supabase.co',
+  supabaseAnonKey: 'YOUR_ANON_KEY',
   registrationGateEnabled: true,
 };

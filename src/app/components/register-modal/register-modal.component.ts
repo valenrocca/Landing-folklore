@@ -1,53 +1,92 @@
+import { Component, EventEmitter, HostListener, Output } from '@angular/core';
 import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  EventEmitter,
-  NgZone,
-  OnDestroy,
-  Output,
-  ViewChild,
-} from '@angular/core';
-import { createWidget } from '@typeform/embed';
-import { environment } from '../../../environments/environment';
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { RegistrationService } from '../../services/registration.service';
 
 @Component({
   selector: 'app-register-modal',
   standalone: true,
+  imports: [ReactiveFormsModule],
   templateUrl: './register-modal.component.html',
   styleUrl: './register-modal.component.css',
 })
-export class RegisterModalComponent implements AfterViewInit, OnDestroy {
+export class RegisterModalComponent {
+  @Output() closed = new EventEmitter<void>();
   @Output() submitted = new EventEmitter<void>();
-  @ViewChild('typeformContainer', { static: true })
-  typeformContainer!: ElementRef<HTMLElement>;
 
+  form: FormGroup;
+  isSubmitting = false;
+  submitError = '';
   submitSuccess = false;
 
-  private unmount?: () => void;
-
-  constructor(private readonly ngZone: NgZone) {}
-
-  ngAfterViewInit(): void {
-    const { unmount } = createWidget(environment.typeformFormId, {
-      container: this.typeformContainer.nativeElement,
-      domain: environment.typeformDomain,
-      hideHeaders: true,
-      inlineOnMobile: true,
-      autoResize: true,
-      opacity: 0,
-      onSubmit: () => {
-        this.ngZone.run(() => {
-          this.submitSuccess = true;
-          setTimeout(() => this.submitted.emit(), 1500);
-        });
-      },
+  constructor(
+    private readonly fb: FormBuilder,
+    private readonly registrationService: RegistrationService
+  ) {
+    this.form = this.fb.group({
+      nombre: ['', [Validators.required, Validators.minLength(2)]],
+      apellido: ['', [Validators.required, Validators.minLength(2)]],
+      email: ['', [Validators.required, Validators.email]],
     });
-
-    this.unmount = unmount;
   }
 
-  ngOnDestroy(): void {
-    this.unmount?.();
+  @HostListener('document:keydown.escape')
+  onEscape(): void {
+    if (!this.isSubmitting && !this.submitSuccess) {
+      this.close();
+    }
+  }
+
+  onBackdropClick(event: MouseEvent): void {
+    if (
+      event.target === event.currentTarget &&
+      !this.isSubmitting &&
+      !this.submitSuccess
+    ) {
+      this.close();
+    }
+  }
+
+  close(): void {
+    if (!this.isSubmitting) {
+      this.closed.emit();
+    }
+  }
+
+  async onSubmit(): Promise<void> {
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
+      return;
+    }
+
+    this.isSubmitting = true;
+    this.submitError = '';
+
+    const { nombre, apellido, email } = this.form.getRawValue();
+
+    try {
+      await this.registrationService.register({
+        nombre: nombre.trim(),
+        apellido: apellido.trim(),
+        email: email.trim(),
+      });
+      this.submitSuccess = true;
+      this.submitted.emit();
+      setTimeout(() => this.close(), 1500);
+    } catch {
+      this.submitError =
+        'No se pudo completar el registro. Intentá de nuevo.';
+    } finally {
+      this.isSubmitting = false;
+    }
+  }
+
+  hasError(field: string): boolean {
+    const control = this.form.get(field);
+    return !!(control && control.invalid && control.touched);
   }
 }

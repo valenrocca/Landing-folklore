@@ -3,8 +3,9 @@
   role="dialog"
   aria-modal="true"
   aria-labelledby="register-logo"
+  (click)="onBackdropClick($event)"
 >
-  <div class="register__frame">
+  <div class="register__frame" (click)="$event.stopPropagation()">
     <div class="register__panel">
       <img
         id="register-logo"
@@ -18,11 +19,57 @@
           ¡Registro exitoso! Te esperamos en el festival.
         </p>
       } @else {
-        <div
-          #typeformContainer
-          class="register__typeform"
-          aria-label="Formulario de registro"
-        ></div>
+        @if (submitError) {
+          <p class="register__feedback register__feedback--error">
+            {{ submitError }}
+          </p>
+        }
+
+        <form class="register__form" [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div class="register__field">
+            <input
+              id="nombre"
+              type="text"
+              formControlName="nombre"
+              placeholder="Nombre"
+              autocomplete="given-name"
+              aria-label="Nombre"
+              [class.register__input--error]="hasError('nombre')"
+            />
+          </div>
+
+          <div class="register__field">
+            <input
+              id="apellido"
+              type="text"
+              formControlName="apellido"
+              placeholder="Apellido"
+              autocomplete="family-name"
+              aria-label="Apellido"
+              [class.register__input--error]="hasError('apellido')"
+            />
+          </div>
+
+          <div class="register__field">
+            <input
+              id="email"
+              type="email"
+              formControlName="email"
+              placeholder="Mail"
+              autocomplete="email"
+              aria-label="Mail"
+              [class.register__input--error]="hasError('email')"
+            />
+          </div>
+
+          <button
+            type="submit"
+            class="register__submit"
+            [disabled]="isSubmitting"
+          >
+            {{ isSubmitting ? 'Enviando...' : 'Enviar' }}
+          </button>
+        </form>
       }
     </div>
   </div>

@@ -23,6 +23,9 @@
   <div class="home-footer" [class.home-footer--hidden]="showRegister" aria-hidden="true"></div>
 
   @if (showRegister) {
-    <app-register-modal (submitted)="onRegisterSubmit()" />
+    <app-register-modal
+      (closed)="onRegisterSubmit()"
+      (submitted)="onRegisterSubmit()"
+    />
   }
 </section>
