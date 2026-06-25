@@ -1,7 +1,11 @@
 <header class="header">
   <div class="header__inner">
     <a routerLink="/" class="header__logo">
-      <img [src]="headerLogo" alt="República Folklore" />
+      <img
+        src="assets/images/logo-header.png"
+        alt="República Folklore"
+        class="header__logo-img"
+      />
     </a>
 
     <nav class="header__nav">
@@ -9,14 +13,14 @@
         routerLink="/"
         routerLinkActive="header__link--active"
         [routerLinkActiveOptions]="{ exact: true }"
-        class="header__link"
+        class="header__link header__link--inicio"
       >
         Inicio
       </a>
       <a
         routerLink="/nosotros"
         routerLinkActive="header__link--active"
-        class="header__link"
+        class="header__link header__link--nosotros"
       >
         Nosotros
       </a>

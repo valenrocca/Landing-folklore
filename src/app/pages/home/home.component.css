@@ -6,8 +6,13 @@
 .page--fit {
   height: 100%;
   min-height: unset;
-  padding: 3.5rem 1rem 0.75rem;
+  padding: var(--space-page-top) var(--space-page-x) var(--space-page-bottom);
   overflow: hidden;
+}
+
+.page--modal-open .hero__body {
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .hero {
@@ -15,58 +20,91 @@
   align-items: center;
   justify-content: center;
   height: 100%;
-  margin: 0 auto;
 }
 
-/* Logo + CTA grouped as one column */
 .hero__body {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: min(94vw, 700px);
-  gap: clamp(0.7rem, 1.6vh, 1rem);
+  max-width: 22rem;
+  gap: 1.25rem;
 }
 
-.hero__cta {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.hero__logo {
+  display: block;
   width: 100%;
-  flex-shrink: 0;
-  gap: clamp(0.7rem, 1.6vh, 1rem);
-}
-
-.hero__copy {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-.hero__hook,
-.hero__subhook {
-  font-size: clamp(0.7rem, 1.5vh, 0.875rem);
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  line-height: 1.2;
-}
-
-.hero__subhook {
-  color: rgba(255, 255, 255, 0.9);
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 .hero__actions {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.6rem;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
 }
 
-.hero__actions .btn-pill {
-  width: auto;
-  min-height: 2.5rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+.btn-hero--register {
+  background: var(--color-red);
+  color: #000000;
+}
+
+.btn-hero--tickets {
+  background: var(--color-blue);
+  color: #000000;
+}
+
+.home-footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  height: 2.5rem;
+  background-color: #7ec8e8;
+  background-image: url('../../../assets/images/fondo-registro.png');
+  background-repeat: repeat-x;
+  background-position: center bottom;
+  background-size: auto 220%;
+  border-top: 2px solid #000000;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.home-footer--hidden {
+  opacity: 0;
+}
+
+@media (min-width: 768px) {
+  .hero__body {
+    max-width: 32rem;
+    gap: 1.5rem;
+  }
+
+  .hero__actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.625rem;
+  }
+
+  .btn-hero {
+    min-width: 10.5rem;
+  }
+
+  .home-footer {
+    height: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero__body {
+    max-width: 36rem;
+  }
+
+  .btn-hero {
+    min-width: 12rem;
+  }
 }

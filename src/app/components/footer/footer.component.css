@@ -1,14 +1,14 @@
 .footer {
   position: relative;
   z-index: 1;
-  padding: 1.5rem 0;
+  padding: 1.25rem 0;
   text-align: center;
 }
 
 .footer__inner p {
-  font-size: 0.625rem;
-  font-weight: 600;
+  font-size: var(--font-size-sm);
+  font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.12em;
   color: rgba(255, 255, 255, 0.45);
 }

@@ -1,4 +1,13 @@
-/* ── Reset & base ── */
+/* ── Font ── */
+@font-face {
+  font-family: 'Owners X Narrow';
+  src: url('assets/fonts/OwnersXNarrow-Black.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Reset & base (mobile first) ── */
 *,
 *::before,
 *::after {
@@ -10,19 +19,127 @@
 :root {
   --color-text: #ffffff;
   --color-accent: #ffe600;
-  --font-sans: 'Inter', system-ui, sans-serif;
-  --font-display: 'Permanent Marker', cursive;
+  --color-pink: #ff5ca8;
+  --color-yellow: #ffe600;
+  --color-red: #e63535;
+  --color-blue: #7ec8e8;
+  --font-sans: 'Owners X Narrow', system-ui, sans-serif;
+
+  /* Tipografía mobile */
+  --font-size-xs: 0.875rem;
+  --font-size-sm: 1rem;
+  --font-size-md: 1.125rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+  --font-size-2xl: 1.875rem;
+  --font-size-hero: 3rem;
+
+  --space-page-x: 1rem;
+  --space-page-top: 4.75rem;
+  --space-page-bottom: 3.5rem;
+
+  /* Botones nav */
+  --btn-nav-height: 2.75rem;
+  --btn-nav-font: 0.8125rem;
+  --btn-nav-px: 0.75rem;
+
+  /* Botones CTA hero */
+  --btn-cta-height: 3.5rem;
+  --btn-cta-font: 1.125rem;
+  --btn-cta-px: 1rem;
+  --btn-cta-width: 100%;
+
+  /* Botones formulario */
+  --btn-form-height: 2.375rem;
+  --btn-form-font: 0.9375rem;
+  --btn-form-px: 1rem;
+  --btn-form-width: auto;
+
+  /* Registro popup */
+  --register-max-width: 21rem;
+  --register-border: 1.75rem 1.25rem;
+  --register-input-height: 2rem;
+  --register-input-size: 0.9375rem;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --font-size-xs: 0.9375rem;
+    --font-size-sm: 1.0625rem;
+    --font-size-md: 1.1875rem;
+    --font-size-lg: 1.3125rem;
+    --font-size-xl: 1.5rem;
+    --font-size-2xl: 1.875rem;
+    --font-size-hero: 4.75rem;
+
+    --space-page-x: 1.5rem;
+    --space-page-top: 5.25rem;
+    --space-page-bottom: 4rem;
+
+    --btn-nav-height: 2.875rem;
+    --btn-nav-font: 0.875rem;
+    --btn-nav-px: 1rem;
+
+    --btn-cta-height: 3.125rem;
+    --btn-cta-font: 1rem;
+    --btn-cta-px: 1.75rem;
+    --btn-cta-width: auto;
+
+    --btn-form-height: 2.25rem;
+    --btn-form-font: 0.875rem;
+    --btn-form-px: 1.125rem;
+
+    --register-max-width: 27rem;
+    --register-border: 2rem 1.75rem;
+    --register-input-height: 2.125rem;
+    --register-input-size: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --font-size-hero: 6rem;
+
+    --btn-nav-height: 3rem;
+    --btn-nav-font: 0.9375rem;
+    --btn-nav-px: 1.125rem;
+
+    --btn-cta-height: 3.25rem;
+    --btn-cta-font: 1.0625rem;
+    --btn-cta-px: 2rem;
+
+    --btn-form-height: 2.375rem;
+    --btn-form-font: 0.9375rem;
+    --btn-form-px: 1.25rem;
+
+    --register-max-width: 29rem;
+    --register-border: 2.25rem 2rem;
+    --register-input-height: 2.25rem;
+    --register-input-size: 1.0625rem;
+  }
 }
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body,
+button,
+input,
+textarea,
+select,
+label {
+  font-family: var(--font-sans);
+  font-weight: 900;
+  text-transform: uppercase;
 }
 
 body {
-  font-family: var(--font-sans);
   background: #000000;
   color: var(--color-text);
-  line-height: 1.5;
+  font-size: var(--font-size-md);
+  line-height: 1.35;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -36,56 +153,54 @@ a {
   text-decoration: none;
 }
 
-/* ── Page background ── */
-.festival-bg {
-  background: transparent;
-}
-
-/* ── Film grain ── */
-.grain {
-  position: relative;
-}
-
-.grain::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.42;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 160px 160px;
-}
-
-/* ── Buttons ── */
-.btn-pill {
+/* ── Botones compartidos ── */
+.btn-pill,
+.btn-hero,
+.btn-form,
+.register__submit {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: 0;
-  background: #ffffff;
-  padding: 0.9rem 2.25rem;
-  font-size: 0.8125rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
+  border: 2px solid #000000;
+  font-family: inherit;
+  font-weight: 900;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: #000000;
-  border: 1.5px solid #000000;
   cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.15s ease;
 }
 
-.btn-pill:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.3);
+.btn-pill,
+.btn-hero {
+  width: var(--btn-cta-width);
+  min-height: var(--btn-cta-height);
+  padding: 0 var(--btn-cta-px);
+  font-size: var(--btn-cta-font);
+  background: #ffffff;
+  color: #000000;
 }
 
-.btn-pill--compact {
-  padding: 0.75rem 1rem;
-  font-size: clamp(0.6875rem, 1.4vh, 0.8125rem);
-  font-weight: 800;
-  letter-spacing: 0.1em;
+.btn-form,
+.register__submit {
+  width: var(--btn-form-width);
+  min-height: var(--btn-form-height);
+  padding: 0 var(--btn-form-px);
+  font-size: var(--btn-form-font);
+  background: #ffffff;
+  color: #000000;
+}
+
+.btn-pill:hover,
+.btn-hero:hover,
+.btn-form:hover:not(:disabled),
+.register__submit:hover:not(:disabled) {
+  transform: scale(1.02);
+}
+
+.btn-form:disabled,
+.register__submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 /* ── Layout ── */
@@ -93,7 +208,7 @@ a {
   width: 100%;
   max-width: 72rem;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 var(--space-page-x);
 }
 
 .page {
@@ -102,7 +217,7 @@ a {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  padding: 5rem 1.5rem 3rem;
+  padding: var(--space-page-top) var(--space-page-x) var(--space-page-bottom);
   text-align: center;
   color: #ffffff;
 }
@@ -118,14 +233,19 @@ a {
   color: var(--color-accent);
 }
 
-/* Shared page logo — same size on Home and Nosotros */
 .page-logo {
   width: 100%;
-  max-width: min(94vw, 700px);
-  max-height: min(50vh, 400px);
+  max-width: 100%;
+  max-height: 40vh;
   height: auto;
   object-fit: contain;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin-inline: auto;
+}
+
+@media (min-width: 768px) {
+  .page-logo {
+    max-width: 40rem;
+    max-height: 48vh;
+  }
 }

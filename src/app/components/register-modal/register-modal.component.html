@@ -1,93 +1,29 @@
 <div
-  class="modal"
+  class="register"
   role="dialog"
   aria-modal="true"
-  aria-labelledby="register-title"
-  (click)="onBackdropClick($event)"
+  aria-labelledby="register-logo"
 >
-  <div class="modal__panel">
-    <button type="button" class="modal__close" (click)="close()" aria-label="Cerrar">
-      ×
-    </button>
+  <div class="register__frame">
+    <div class="register__panel">
+      <img
+        id="register-logo"
+        src="assets/images/logo-header.png"
+        alt="República Folklore"
+        class="register__logo"
+      />
 
-    <h2 id="register-title" class="modal__title">Registrate</h2>
-    <p class="modal__subtitle">Completá tus datos para sumarte a la comunidad</p>
-
-    @if (submitSuccess) {
-      <p class="modal__feedback modal__feedback--success">
-        ¡Registro exitoso! Te esperamos en el festival.
-      </p>
-    }
-
-    @if (submitError) {
-      <p class="modal__feedback modal__feedback--error">{{ submitError }}</p>
-    }
-
-    <form class="modal__form" [formGroup]="form" (ngSubmit)="onSubmit()">
-      <div class="form-field">
-        <label for="nombre">Nombre</label>
-        <input
-          id="nombre"
-          type="text"
-          formControlName="nombre"
-          autocomplete="given-name"
-          [class.form-field__input--error]="hasError('nombre')"
-        />
-        @if (hasError('nombre')) {
-          <span class="form-field__error">Ingresá tu nombre</span>
-        }
-      </div>
-
-      <div class="form-field">
-        <label for="apellido">Apellido</label>
-        <input
-          id="apellido"
-          type="text"
-          formControlName="apellido"
-          autocomplete="family-name"
-          [class.form-field__input--error]="hasError('apellido')"
-        />
-        @if (hasError('apellido')) {
-          <span class="form-field__error">Ingresá tu apellido</span>
-        }
-      </div>
-
-      <div class="form-field">
-        <label for="dni">DNI</label>
-        <input
-          id="dni"
-          type="text"
-          inputmode="numeric"
-          formControlName="dni"
-          autocomplete="off"
-          [class.form-field__input--error]="hasError('dni')"
-        />
-        @if (hasError('dni')) {
-          <span class="form-field__error">Ingresá un DNI válido (7 u 8 dígitos)</span>
-        }
-      </div>
-
-      <div class="form-field">
-        <label for="email">Email</label>
-        <input
-          id="email"
-          type="email"
-          formControlName="email"
-          autocomplete="email"
-          [class.form-field__input--error]="hasError('email')"
-        />
-        @if (hasError('email')) {
-          <span class="form-field__error">Ingresá un email válido</span>
-        }
-      </div>
-
-      <button
-        type="submit"
-        class="btn-pill modal__submit"
-        [disabled]="isSubmitting"
-      >
-        {{ isSubmitting ? 'Enviando...' : 'Enviar' }}
-      </button>
-    </form>
+      @if (submitSuccess) {
+        <p class="register__feedback register__feedback--success">
+          ¡Registro exitoso! Te esperamos en el festival.
+        </p>
+      } @else {
+        <div
+          #typeformContainer
+          class="register__typeform"
+          aria-label="Formulario de registro"
+        ></div>
+      }
+    </div>
   </div>
 </div>

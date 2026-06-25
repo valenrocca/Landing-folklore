@@ -8,6 +8,4 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
 })
-export class HeaderComponent {
-  readonly headerLogo = 'assets/LOGO HEADER.png';
-}
+export class HeaderComponent {}

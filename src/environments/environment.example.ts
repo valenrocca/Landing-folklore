@@ -1,5 +1,7 @@
 export const environment = {
   production: false,
-  supabaseUrl: 'https://YOUR_PROJECT.supabase.co',
-  supabaseAnonKey: 'YOUR_ANON_KEY',
+  typeformFormId: 'DxHVf2L2',
+  typeformDomain: 'https://daleplaylive.typeform.com',
+  /** Bloquea la home con el popup de registro hasta el lanzamiento. */
+  registrationGateEnabled: true,
 };
