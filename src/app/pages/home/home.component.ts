@@ -19,8 +19,4 @@ export class HomeComponent implements OnInit {
   openRegister(): void {
     this.showRegister = true;
   }
-
-  onRegisterSubmit(): void {
-    this.showRegister = false;
-  }
 }

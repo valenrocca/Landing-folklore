@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostListener, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -15,9 +15,6 @@ import { RegistrationService } from '../../services/registration.service';
   styleUrl: './register-modal.component.css',
 })
 export class RegisterModalComponent {
-  @Output() closed = new EventEmitter<void>();
-  @Output() submitted = new EventEmitter<void>();
-
   form: FormGroup;
   isSubmitting = false;
   submitError = '';
@@ -32,29 +29,6 @@ export class RegisterModalComponent {
       apellido: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.email]],
     });
-  }
-
-  @HostListener('document:keydown.escape')
-  onEscape(): void {
-    if (!this.isSubmitting && !this.submitSuccess) {
-      this.close();
-    }
-  }
-
-  onBackdropClick(event: MouseEvent): void {
-    if (
-      event.target === event.currentTarget &&
-      !this.isSubmitting &&
-      !this.submitSuccess
-    ) {
-      this.close();
-    }
-  }
-
-  close(): void {
-    if (!this.isSubmitting) {
-      this.closed.emit();
-    }
   }
 
   async onSubmit(): Promise<void> {
@@ -75,8 +49,6 @@ export class RegisterModalComponent {
         email: email.trim(),
       });
       this.submitSuccess = true;
-      this.submitted.emit();
-      setTimeout(() => this.close(), 1500);
     } catch {
       this.submitError =
         'No se pudo completar el registro. Intentá de nuevo.';

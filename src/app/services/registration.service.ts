@@ -10,24 +10,8 @@ export interface RegisterFormData {
 @Injectable({ providedIn: 'root' })
 export class RegistrationService {
   async register(data: RegisterFormData): Promise<void> {
-    try {
-      const response = await fetch('/api/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-
-      if (response.ok) {
-        return;
-      }
-
-      const payload = await response.json().catch(() => ({}));
-      console.error('API register failed', response.status, payload);
-    } catch (error) {
-      console.error('API register unreachable', error);
-    }
-
     await this.registerLocally(data);
+    void this.syncToTypeform(data);
   }
 
   private async registerLocally(data: RegisterFormData): Promise<void> {
@@ -45,6 +29,18 @@ export class RegistrationService {
 
     if (error) {
       throw error;
+    }
+  }
+
+  private async syncToTypeform(data: RegisterFormData): Promise<void> {
+    try {
+      await fetch('/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...data, skipSupabase: true }),
+      });
+    } catch {
+      // Typeform sync is best-effort; Supabase already saved the registration.
     }
   }
 }
