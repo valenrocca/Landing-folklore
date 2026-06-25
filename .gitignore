@@ -11,6 +11,9 @@
 .DS_Store
 *.log
 
+# source GIFs (convertir a mp4 antes de usar; superan el limite de GitHub)
+*.gif
+
 # env
 .env*
 src/environments/environment.ts

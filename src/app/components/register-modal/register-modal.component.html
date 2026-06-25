@@ -18,7 +18,7 @@
         <p class="register__feedback register__feedback--success">
           ¡Registro exitoso! Te esperamos en el festival.
         </p>
-      } @else {
+      } @else if (mode === 'register') {
         @if (submitError) {
           <p class="register__feedback register__feedback--error">
             {{ submitError }}
@@ -70,6 +70,48 @@
             {{ isSubmitting ? 'Enviando...' : 'Enviar' }}
           </button>
         </form>
+
+        <p class="register__switch">
+          Si ya estás registrado tocá
+          <a class="register__switch-link" (click)="showLogin()" role="button" tabindex="0" (keydown.enter)="showLogin()">aquí</a>
+        </p>
+      } @else {
+        @if (loginError) {
+          <p class="register__feedback register__feedback--error">
+            {{ loginError }}
+          </p>
+        }
+
+        <form
+          class="register__form"
+          [formGroup]="loginForm"
+          (ngSubmit)="onLogin()"
+        >
+          <div class="register__field">
+            <input
+              id="login-email"
+              type="email"
+              formControlName="email"
+              placeholder="Mail"
+              autocomplete="email"
+              aria-label="Mail"
+              [class.register__input--error]="hasLoginError('email')"
+            />
+          </div>
+
+          <button
+            type="submit"
+            class="register__submit"
+            [disabled]="isSubmitting"
+          >
+            {{ isSubmitting ? 'Verificando...' : 'Ingresar' }}
+          </button>
+        </form>
+
+        <p class="register__switch">
+          ¿No estás registrado? Tocá
+          <a class="register__switch-link" (click)="showRegister()" role="button" tabindex="0" (keydown.enter)="showRegister()">aquí</a>
+        </p>
       }
     </div>
   </div>

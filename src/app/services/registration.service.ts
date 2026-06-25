@@ -18,12 +18,25 @@ export class RegistrationService {
     // void this.syncToTypeform(data);
   }
 
+  async isEmailRegistered(email: string): Promise<boolean> {
+    const supabase = await this.createClient();
+    const normalizedEmail = email.trim().toLowerCase();
+
+    const { data, error } = await supabase
+      .from('registrations')
+      .select('email')
+      .eq('email', normalizedEmail)
+      .limit(1);
+
+    if (error) {
+      throw toRegistrationError(error);
+    }
+
+    return (data?.length ?? 0) > 0;
+  }
+
   private async registerLocally(data: RegisterFormData): Promise<void> {
-    const { createClient } = await import('@supabase/supabase-js');
-    const supabase = createClient(
-      environment.supabaseUrl,
-      environment.supabaseAnonKey
-    );
+    const supabase = await this.createClient();
 
     const payload = {
       nombre: data.nombre.trim(),
@@ -36,6 +49,11 @@ export class RegistrationService {
     if (error) {
       throw toRegistrationError(error);
     }
+  }
+
+  private async createClient() {
+    const { createClient } = await import('@supabase/supabase-js');
+    return createClient(environment.supabaseUrl, environment.supabaseAnonKey);
   }
 
   // private async syncToTypeform(data: RegisterFormData): Promise<void> {
