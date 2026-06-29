@@ -55,6 +55,38 @@
   color: #000000;
 }
 
+.home__video-cta {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 40;
+  display: block;
+  line-height: 0;
+  transition: transform 0.15s ease;
+}
+
+.home__video-cta:hover {
+  transform: scale(1.05);
+}
+
+.home__video-cta-img {
+  display: block;
+  width: auto;
+  height: 1.875rem;
+  object-fit: contain;
+}
+
+.lineup {
+  width: 100%;
+  line-height: 0;
+}
+
+.lineup__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .manifesto {
   width: 100%;
   line-height: 0;
@@ -142,6 +174,15 @@
 
   .manifesto__visual--desktop {
     display: block;
+  }
+
+  .home__video-cta {
+    right: 1.5rem;
+    bottom: 1.5rem;
+  }
+
+  .home__video-cta-img {
+    height: 2.25rem;
   }
 
   .manifesto__text {

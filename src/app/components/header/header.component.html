@@ -8,18 +8,33 @@
       />
     </a>
 
-    <nav class="header__social" aria-label="Redes sociales">
-      @for (link of socialLinks; track link.label) {
-        <a
-          class="header__social-link"
-          [href]="link.href"
-          target="_blank"
-          rel="noopener noreferrer"
-          [attr.aria-label]="link.label"
-        >
-          <img [src]="link.image" alt="" class="header__social-img" />
-        </a>
-      }
-    </nav>
+    <div class="header__actions">
+      <button
+        type="button"
+        class="header__cta"
+        (click)="goToManifiesto()"
+        aria-label="Ver completo"
+      >
+        <img
+          src="assets/BOTONES/Botones Landing RF-02.png"
+          alt="Ver completo"
+          class="header__cta-img"
+        />
+      </button>
+
+      <nav class="header__social" aria-label="Redes sociales">
+        @for (link of socialLinks; track link.label) {
+          <a
+            class="header__social-link"
+            [href]="link.href"
+            target="_blank"
+            rel="noopener noreferrer"
+            [attr.aria-label]="link.label"
+          >
+            <img [src]="link.image" alt="" class="header__social-img" />
+          </a>
+        }
+      </nav>
+    </div>
   </div>
 </header>

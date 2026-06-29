@@ -24,7 +24,15 @@
     </div>
   </section>
 
-  <section class="manifesto" aria-label="Manifiesto">
+  <section class="lineup" aria-label="Line up">
+    <img
+      src="assets/images/RF_LINEUP_WEB.jpg.jpeg"
+      alt="Line up República Folklore"
+      class="lineup__img"
+    />
+  </section>
+
+  <section id="manifiesto" class="manifesto" aria-label="Manifiesto">
     <div class="manifesto__visual manifesto__visual--mobile">
       <img
         src="assets/images/Fondo Mobile.svg"
@@ -55,6 +63,20 @@
   </section>
 
   <app-footer />
+
+  <a
+    href="https://www.youtube.com/watch?v=7tCV6B5C6SE"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="home__video-cta"
+    aria-label="Ver video"
+  >
+    <img
+      src="assets/BOTONES/BOTON%20VER%20COMPLETO.jpg.jpeg"
+      alt="Ver video"
+      class="home__video-cta-img"
+    />
+  </a>
 
   @if (showRegister) {
     <app-register-modal (registrationSuccess)="onRegistrationSuccess()" />

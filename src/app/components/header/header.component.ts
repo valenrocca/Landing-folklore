@@ -11,4 +11,10 @@ import { SOCIAL_LINKS } from '../../constants/social-links';
 })
 export class HeaderComponent {
   readonly socialLinks = SOCIAL_LINKS;
+
+  goToManifiesto(): void {
+    document
+      .getElementById('manifiesto')
+      ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 }
