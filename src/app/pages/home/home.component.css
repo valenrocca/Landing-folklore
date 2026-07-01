@@ -37,22 +37,22 @@
   object-fit: contain;
 }
 
-.hero__actions {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+.hero__tickets {
+  display: block;
+  line-height: 0;
+  transition: transform 0.15s ease;
+}
+
+.hero__tickets:hover {
+  transform: scale(1.05);
+}
+
+.hero__tickets-img {
+  display: block;
   width: 100%;
-  max-width: 22rem;
-}
-
-.btn-hero--register {
-  background: var(--color-red);
-  color: #000000;
-}
-
-.btn-hero--tickets {
-  background: var(--color-blue);
-  color: #000000;
+  max-width: min(70vw, 14rem);
+  height: auto;
+  object-fit: contain;
 }
 
 .home__video-cta {
@@ -156,16 +156,8 @@
     gap: 2rem;
   }
 
-  .hero__actions {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    max-width: none;
-    gap: 0.625rem;
-  }
-
-  .btn-hero {
-    min-width: 10.5rem;
+  .hero__tickets-img {
+    max-width: min(55vw, 18rem);
   }
 
   .manifesto__visual--mobile {
@@ -197,7 +189,7 @@
     max-height: 62vh;
   }
 
-  .btn-hero {
-    min-width: 12rem;
+  .hero__tickets-img {
+    max-width: min(45vw, 20rem);
   }
 }

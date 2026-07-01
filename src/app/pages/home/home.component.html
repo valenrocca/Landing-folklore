@@ -8,18 +8,32 @@
           class="hero__logo"
         />
 
-        @if (!showRegister && !registrationComplete) {
-          <div class="hero__actions">
-            <button
-              type="button"
-              class="btn-hero btn-hero--register"
-              (click)="openRegister()"
-            >
-              Registrate
-            </button>
-            <a href="#" class="btn-hero btn-hero--tickets">Comprar entradas</a>
-          </div>
-        }
+        <a
+          href="https://www.allaccess.com.ar/event/republica-folklore"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hero__tickets"
+          aria-label="Comprar entradas"
+        >
+          <img
+            src="assets/BOTONES/comprar%20entradas.png"
+            alt="Comprar entradas"
+            class="hero__tickets-img"
+          />
+        </a>
+        <a
+        href="https://www.youtube.com/watch?v=7tCV6B5C6SE"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="home__video-cta"
+        aria-label="Ver video"
+      >
+        <img
+          src="assets/BOTONES/BOTON%20VER%20COMPLETO.jpg.jpeg"
+          alt="Ver video"
+          class="home__video-cta-img"
+        />
+      </a>
       </div>
     </div>
   </section>
@@ -64,21 +78,6 @@
 
   <app-footer />
 
-  <a
-    href="https://www.youtube.com/watch?v=7tCV6B5C6SE"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="home__video-cta"
-    aria-label="Ver video"
-  >
-    <img
-      src="assets/BOTONES/BOTON%20VER%20COMPLETO.jpg.jpeg"
-      alt="Ver video"
-      class="home__video-cta-img"
-    />
-  </a>
+ 
 
-  @if (showRegister) {
-    <app-register-modal (registrationSuccess)="onRegistrationSuccess()" />
-  }
 </div>
